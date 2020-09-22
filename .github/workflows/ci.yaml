@@ -9,6 +9,7 @@ jobs:
         with:
           toolchain: stable
           profile: minimal
-      - uses: actions-rs/cargo
+          override: true
+      - uses: actions-rs/cargo@v1
         with:
           command: test
