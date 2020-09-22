@@ -3,9 +3,9 @@ pub struct Config {
     gamma: f64, // 
     beta: f64,
     steps: i32,
-    initial_s: i64,
-    initial_i: i64,
-    initial_r: i64
+    initial_s: f64,
+    initial_i: f64,
+    initial_r: f64
 }
 
 impl Config {
@@ -41,15 +41,15 @@ impl Config {
         self.beta
     }
 
-    pub fn get_initial_s(self) -> i64 {
+    pub fn get_initial_s(self) -> f64 {
         self.initial_s
     }
 
-    pub fn get_initial_i(self) -> i64 {
+    pub fn get_initial_i(self) -> f64 {
         self.initial_i
     }
 
-    pub fn get_initial_r(self) -> i64 {
+    pub fn get_initial_r(self) -> f64 {
         self.initial_r
     }
 }
