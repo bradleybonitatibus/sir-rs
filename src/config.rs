@@ -18,7 +18,7 @@ impl Config {
         }
         let gamma = args[0].parse().unwrap();
         let beta = args[1].parse().unwrap();
-        let steps = args[2].parse().unwrap();
+        let steps: i32 = args[2].parse().unwrap();
         Config {
             gamma,
             beta,

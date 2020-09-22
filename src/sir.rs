@@ -43,19 +43,21 @@ impl SIRModel {
     pub fn run(mut self) -> SIRModel {
         // mail ODE loop to caluclate each day's
         let mut counter: i32 = 0;
-        let mut s = self.config.get_initial_s() as f64;
-        let mut i = self.config.get_initial_i() as f64;
-        let mut r = self.config.get_initial_r() as f64;
-        let n = s + i + r;
-        while self.config.get_steps() > counter {
-            let new_infections = self.config.get_beta() * s * i;
-            let new_recovered = self.config.get_gamma() * i;
-            let s_prime = -new_infections;
-            let i_prime = new_infections - new_recovered;
-            let r_prime = new_recovered;
-            s = s + s_prime;
-            i = i + i_prime;
-            r = r + r_prime;
+        let mut s = self.config.get_initial_s();
+        let mut i = self.config.get_initial_i();
+        let mut r = self.config.get_initial_r();
+        let gamma = self.config.get_gamma();
+        let beta = self.config.get_beta();
+        let steps = self.config.get_steps();
+        while counter < steps {
+            let new_infections = beta * (s * i);
+            let new_recovered = gamma * i;
+            let delta_s = -new_infections;
+            let delta_i = new_infections - new_recovered;
+            let delta_r = new_recovered;
+            s += delta_s;
+            i += delta_i;
+            r += delta_r;
             let tmp: SIR = SIR::new(s, i, r);
             self.data.push(tmp);
             counter += 1;
