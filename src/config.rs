@@ -16,19 +16,25 @@ impl Config {
         if !is_valid {
             panic!("Invalid command line arguments passed");
         }
-        let gamma = args[0].parse().unwrap();
-        let beta = args[1].parse().unwrap();
-        let steps: i32 = args[2].parse().unwrap();
+        Config::build(&args)
+    }
+
+    fn build(args: &Vec<String>) -> Config {
+        let gamma = args[0].parse().expect("Failed to parse gamma");
+        let beta = args[1].parse().expect("Failed to parse beta");
+        let steps: i32 = args[2].parse().expect("Failed to parse steps");
         Config {
             gamma,
             beta,
             steps,
-            initial_s: args[3].parse().unwrap(),
-            initial_i: args[4].parse().unwrap(),
-            initial_r: args[5].parse().unwrap(),
+            initial_s: args[3].parse().expect("Failed to parse initial S"),
+            initial_i: args[4].parse().expect("Failed to parse initial I"),
+            initial_r: args[5].parse().expect("Failed to parse initial R"),
         }
     }
+}
 
+impl Config {
     pub fn get_steps(self) -> i32 {
         self.steps
     }
@@ -61,9 +67,11 @@ fn validate_number_of_arguments(args: &Vec<String>) -> bool {
     return true;
 }
 
+
+
 #[cfg(test)]
 mod tests {
-    use super::{validate_number_of_arguments};
+    use super::*;
     #[test]
     fn test_failed_validation() {
         let t : Vec<String> = vec![];
@@ -82,5 +90,45 @@ mod tests {
         ];
 
         assert!(validate_number_of_arguments(&t));
+    }
+
+    #[test]
+    fn test_builds_config_successfully() {
+        let gamma = 0.05;
+        let beta = 0.0001;
+        let steps = 100;
+        let s = 10000 as f64;
+        let i = 1000 as f64;
+        let r = 0 as f64;
+        let t : Vec<String> = vec![
+            gamma.to_string(),
+            beta.to_string(),
+            steps.to_string(),
+            s.to_string(),
+            i.to_string(),
+            r.to_string(),
+        ];
+
+        let cfg = Config::build(&t);
+        assert_eq!(cfg.get_gamma(), gamma);
+        assert_eq!(cfg.get_beta(), beta);
+        assert_eq!(cfg.get_steps(), steps);
+        assert_eq!(cfg.get_initial_s(), s);
+        assert_eq!(cfg.get_initial_i(), i);
+        assert_eq!(cfg.get_initial_r(), r);
+    }
+
+    #[test]
+    #[should_panic]
+    fn test_builds_and_panics_with_bad_datatypes() {
+        let t: Vec<String> = vec![
+            String::from("hello"),
+            2.to_string(),
+            3.to_string(),
+            4.to_string(),
+            5.to_string(),
+            6.to_string()
+        ];
+        Config::build(&t);
     }
 }
