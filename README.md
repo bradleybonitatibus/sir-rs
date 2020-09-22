@@ -43,3 +43,4 @@ The results will be output to a CSV locally and will have the following columns 
 ```
 
 ## Model
+Please visit https://en.wikipedia.org/wiki/Compartmental_models_in_epidemiology#SIR for details.
