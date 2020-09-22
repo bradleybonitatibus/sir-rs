@@ -2,22 +2,25 @@ use crate::config;
 
 #[derive(Debug, Copy, Clone)]
 struct SIR {
+    step_number: i32,
     susceptible: f64,
     infectious: f64,
     recovered: f64,
 }
 
 impl SIR {
-    fn new(s: f64, i: f64, r: f64) -> SIR {
+    fn new(s: f64, i: f64, r: f64, step_number: i32) -> SIR {
         SIR{
             susceptible: s,
             infectious: i,
             recovered: r,
+            step_number,
         }
     }
 
     fn to_string(self) -> Vec<String> {
         vec![
+            self.step_number.to_string(),
             self.susceptible.to_string(),
             self.infectious.to_string(),
             self.recovered.to_string(),
@@ -58,7 +61,7 @@ impl SIRModel {
             s += delta_s;
             i += delta_i;
             r += delta_r;
-            let tmp: SIR = SIR::new(s, i, r);
+            let tmp: SIR = SIR::new(s, i, r, counter);
             self.data.push(tmp);
             counter += 1;
         }
