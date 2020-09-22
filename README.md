@@ -6,13 +6,13 @@ The CLI takes 5 input parameters to the application to run the simulation.
 - Recovery Rate (`gamma`)
 - Infection Rate (`beta`)
 - Time Steps (`t`)
-- Initial Susceptible (`S<sub>0</sub>`)
-- Initial Infectious (`I<sub>0</sub>`)
-- Initial Recovered (`R<sub>0</sub>`)
+- Initial Susceptible (S<sub>0</sub>)
+- Initial Infectious (I<sub>0</sub>)
+- Initial Recovered (R<sub>0</sub>)
 
 
 ```bash
-cargo run -- {gamma} {beta} {t} {S<sub>0</sub>} {I<sub>0</sub>} {R<sub>0</sub>}
+cargo run -- {gamma} {beta} {t} {S} {I} {R}
 ```
 
 Note: Please replace the `{}` values with your corresponding values.
