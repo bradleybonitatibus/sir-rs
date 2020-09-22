@@ -1,4 +1,7 @@
 # sir-rs
+
+![CI](https://github.com/bradleybonitatibus/sir-rs/workflows/CI/badge.svg)
+
 SIR infectious disease modelling CLI
 
 ## Example Usage
