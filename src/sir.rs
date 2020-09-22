@@ -52,6 +52,8 @@ impl SIRModel {
         let gamma = self.config.get_gamma();
         let beta = self.config.get_beta();
         let steps = self.config.get_steps();
+        let sub_0 = SIR::new(s, i, r, counter);
+        self.data.push(sub_0);
         while counter < steps {
             let new_infections = beta * (s * i);
             let new_recovered = gamma * i;
@@ -61,7 +63,7 @@ impl SIRModel {
             s += delta_s;
             i += delta_i;
             r += delta_r;
-            let tmp: SIR = SIR::new(s, i, r, counter);
+            let tmp: SIR = SIR::new(s, i, r, counter + 1);
             self.data.push(tmp);
             counter += 1;
         }
