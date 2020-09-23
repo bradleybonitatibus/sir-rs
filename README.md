@@ -55,10 +55,15 @@ The binary will be located in `./target/release/sir-rs`. If you are on a Windows
 
 ### Running the compiled binary
 Ensure the binary has file permission to be executed.
-*nix Command to run the binary:
+
+Linux/macOS Command to run the binary:
 ```bash
 cd ./target/release && ./sir-rs {gamma} {beta} {t} {S} {I} {R}
 ```
 
+Windows command to run binay:
+```bash
+cd .\target\release && sir.exe {gamma} {beta} {t} {S} {I} {R}
+```
 ## Model
 Please visit https://en.wikipedia.org/wiki/Compartmental_models_in_epidemiology#SIR for details.
