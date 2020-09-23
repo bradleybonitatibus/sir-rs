@@ -18,15 +18,19 @@ The CLI takes 5 input parameters to the application to run the simulation.
 cargo run -- {gamma} {beta} {t} {S} {I} {R}
 ```
 
-Note: Please replace the `{}` values with your corresponding values.
+<strong>Note</strong>: Please replace the `{}` values with your corresponding values.
 
-## Output
-The results will be output to a CSV locally and will have the following columns (in order):
+Running this command will write a `csv` file to the directory in which the 
+executable was running from called `results.csv`.
 
-- Time Step / Day
-- S
-- I
-- R
+The schema for the `csv` is as follows:
+| Column Index | Description |
+| ------------ | ----------- |
+| 0 | Time step / day|
+| 1 | Number of susceptible people |
+| 2 | Number of infectious people |
+| 3 | Number of recovered people |
+
 
 ```csv
 0,10000,1000,0
@@ -40,6 +44,20 @@ The results will be output to a CSV locally and will have the following columns 
 8,0.048564610527734864,8537.607998478374,2462.3434369110983
 9,0.007102049799277241,8110.769061115184,2889.223836835017
 10,0.0013417412210295259,7705.236368368003,3294.7622898907766
+```
+
+### Compiled Binary
+To get the compile this project into a binary, run:
+```bash
+cargo build --release
+```
+The binary will be located in `./target/release/sir-rs`. If you are on a Windows machine, the binary will be a `.exe` file.
+
+### Running the compiled binary
+Ensure the binary has file permission to be executed.
+*nix Command to run the binary:
+```bash
+cd ./target/release && ./sir-rs {gamma} {beta} {t} {S} {I} {R}
 ```
 
 ## Model
