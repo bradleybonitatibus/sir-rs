@@ -32,6 +32,13 @@ The schema for the `csv` is as follows:
 | 3 | Number of recovered people |
 
 
+### Example
+Running the following command results in the following data being generated:
+
+```bash
+cargo run -- 0.05 0.0001 100 10000 1000 0
+```
+
 ```csv
 0,10000,1000,0
 1,9000,1950,50
@@ -45,6 +52,10 @@ The schema for the `csv` is as follows:
 9,0.007102049799277241,8110.769061115184,2889.223836835017
 10,0.0013417412210295259,7705.236368368003,3294.7622898907766
 ```
+
+This dataset can then be visualized by the tool of your choice, but I will display an example in Power BI.
+
+<img src="./assets/example.png" title="Example SIR Model" alt="Example SIR Model" />
 
 ### Compiled Binary
 To get the compile this project into a binary, run:
