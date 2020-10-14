@@ -38,6 +38,15 @@ Running the following command results in the following data being generated:
 ```bash
 cargo run -- 0.05 0.0001 100 10000 1000 0
 ```
+or if you've compiled the binary on Linux:
+```bash
+./target/release/sir-rs 0.05 0.0001 100 10000 1000 0
+```
+
+And on Windows:
+```bash
+.\target\release\sir-rs 0.05 0.0001 100 10000 1000 0
+```
 
 ```csv
 0,10000,1000,0
