@@ -10,7 +10,7 @@ struct SIR {
 
 impl SIR {
     fn new(s: f64, i: f64, r: f64, step_number: i32) -> SIR {
-        SIR{
+        SIR {
             susceptible: s,
             infectious: i,
             recovered: r,
@@ -80,7 +80,5 @@ impl SIRModel {
         for row in &self.data {
             wtr.write_record(&row.to_string()).unwrap();
         }
-
     }
 }
-

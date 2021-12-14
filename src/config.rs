@@ -1,11 +1,11 @@
 #[derive(Debug, Copy, Clone)]
 pub struct Config {
-    gamma: f64, // 
+    gamma: f64,
     beta: f64,
     steps: i32,
     initial_s: f64,
     initial_i: f64,
-    initial_r: f64
+    initial_r: f64,
 }
 
 impl Config {
@@ -67,25 +67,23 @@ fn validate_number_of_arguments(args: &Vec<String>) -> bool {
     return true;
 }
 
-
-
 #[cfg(test)]
 mod tests {
     use super::*;
     #[test]
     fn test_failed_validation() {
-        let t : Vec<String> = vec![];
+        let t: Vec<String> = vec![];
         assert_ne!(validate_number_of_arguments(&t), true);
     }
 
     #[test]
     fn test_validation_with_correct_number_of_args() {
-        let t : Vec<String> = vec![
+        let t: Vec<String> = vec![
             String::from("0.05"),
             String::from("0.0001"),
-            String::from("100",),
+            String::from("100"),
             String::from("10000"),
-            String::from("1000",),
+            String::from("1000"),
             String::from("0"),
         ];
 
@@ -100,7 +98,7 @@ mod tests {
         let s = 10000 as f64;
         let i = 1000 as f64;
         let r = 0 as f64;
-        let t : Vec<String> = vec![
+        let t: Vec<String> = vec![
             gamma.to_string(),
             beta.to_string(),
             steps.to_string(),
@@ -127,7 +125,7 @@ mod tests {
             3.to_string(),
             4.to_string(),
             5.to_string(),
-            6.to_string()
+            6.to_string(),
         ];
         Config::build(&t);
     }
